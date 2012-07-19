@@ -16,6 +16,7 @@
 
 package ncurses4j.examples;
 
+import com.sun.jna.Pointer;
 import ncurses4j.NCurses;
 import ncurses4j.NCursesLibrary;
 
@@ -23,8 +24,9 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         NCursesLibrary ncurses = NCursesLibrary.INSTANCE;
+        Pointer stdscr;
 
-        ncurses.initscr();
+        stdscr = ncurses.initscr();
 
         if (ncurses.has_colors()) {
             ncurses.start_color();
@@ -35,8 +37,16 @@ public class HelloWorld {
             }
         }
 
+        int maxx = ncurses.getmaxx(stdscr);
+        int maxy = ncurses.getmaxy(stdscr);
+
+        String message = "Hello World";
+
+        int x = maxx / 2 - message.length() / 2;
+        int y = maxy / 2;
+
         ncurses.erase();
-        ncurses.mvprintw(1, 1, "Hello World");
+        ncurses.mvprintw(y, x, message);
         ncurses.refresh();
         ncurses.getch();
         ncurses.endwin();

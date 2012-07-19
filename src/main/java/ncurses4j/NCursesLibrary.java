@@ -30,6 +30,8 @@ public interface NCursesLibrary extends Library {
     int     endwin();
     int     erase();
     int     getch();
+    int     getmaxx(Pointer win);
+    int     getmaxy(Pointer win);
     boolean has_colors();
     Pointer initscr();
     int     init_pair(short pair, short f, short b);
