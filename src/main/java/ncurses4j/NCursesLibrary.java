@@ -23,12 +23,18 @@ import com.sun.jna.Pointer;
 public interface NCursesLibrary extends Library {
     NCursesLibrary INSTANCE = (NCursesLibrary) Native.loadLibrary("ncurses", NCursesLibrary.class);
 
+    int     COLOR_PAIR(int pair);
+    int     attroff(int attrs);
+    int     attron(int attrs);
     int     clear();
     int     endwin();
     int     erase();
     int     getch();
+    boolean has_colors();
     Pointer initscr();
+    int     init_pair(short pair, short f, short b);
     int     mvprintw(int x, int y, String fmt, Object... args);
     int     printw(String fmt, Object... args);
     int     refresh();
+    int     start_color();
 }

@@ -16,6 +16,7 @@
 
 package ncurses4j.examples;
 
+import ncurses4j.NCurses;
 import ncurses4j.NCursesLibrary;
 
 public class HelloWorld {
@@ -24,6 +25,15 @@ public class HelloWorld {
         NCursesLibrary ncurses = NCursesLibrary.INSTANCE;
 
         ncurses.initscr();
+        ncurses.start_color();
+
+        if (ncurses.has_colors()) {
+            if (NCurses.COLOR_PAIRS.get() > 1) {
+                ncurses.init_pair((short) 1, NCurses.COLOR_BLACK, NCurses.COLOR_WHITE);
+                ncurses.attron(ncurses.COLOR_PAIR(1));
+            }
+        }
+
         ncurses.erase();
         ncurses.mvprintw(1, 1, "Hello World");
         ncurses.refresh();
