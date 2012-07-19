@@ -26,6 +26,7 @@ public interface NCursesLibrary extends Library {
     int     endwin();
     int     getch();
     Pointer initscr();
+    int     mvprintw(int x, int y, String fmt, Object... args);
     int     printw(String fmt, Object... args);
     int     refresh();
 }

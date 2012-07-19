@@ -24,7 +24,7 @@ public class HelloWorld {
         NCursesLibrary ncurses = NCursesLibrary.INSTANCE;
 
         ncurses.initscr();
-        ncurses.printw("Hello World");
+        ncurses.mvprintw(1, 1, "Hello World");
         ncurses.refresh();
         ncurses.getch();
         ncurses.endwin();
