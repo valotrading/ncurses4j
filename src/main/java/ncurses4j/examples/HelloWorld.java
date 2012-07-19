@@ -25,9 +25,10 @@ public class HelloWorld {
         NCursesLibrary ncurses = NCursesLibrary.INSTANCE;
 
         ncurses.initscr();
-        ncurses.start_color();
 
         if (ncurses.has_colors()) {
+            ncurses.start_color();
+
             if (NCurses.COLOR_PAIRS.get() > 1) {
                 ncurses.init_pair((short) 1, NCurses.COLOR_BLACK, NCurses.COLOR_WHITE);
                 ncurses.attron(ncurses.COLOR_PAIR(1));
