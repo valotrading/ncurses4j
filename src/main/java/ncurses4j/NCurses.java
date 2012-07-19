@@ -16,9 +16,6 @@
 
 package ncurses4j;
 
-import com.sun.jna.NativeLibrary;
-import com.sun.jna.ptr.IntByReference;
-
 public interface NCurses {
     short COLOR_BLACK   = 0;
     short COLOR_RED     = 1;

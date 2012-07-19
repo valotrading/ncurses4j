@@ -32,6 +32,7 @@ public class GlobalIntVariable {
             value = new IntByReference();
             value.setPointer(NativeLibrary.getInstance("ncurses").getGlobalVariableAddress(name));
         }
+
         return value.getValue();
     }
 }
