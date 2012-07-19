@@ -37,6 +37,8 @@ public class HelloWorld {
             }
         }
 
+        ncurses.attron(NCurses.A_BOLD);
+
         int maxx = ncurses.getmaxx(stdscr);
         int maxy = ncurses.getmaxy(stdscr);
 
