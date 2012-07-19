@@ -23,6 +23,7 @@ import com.sun.jna.Pointer;
 public interface NCursesLibrary extends Library {
     NCursesLibrary INSTANCE = (NCursesLibrary) Native.loadLibrary("ncurses", NCursesLibrary.class);
 
+    int     clear();
     int     endwin();
     int     getch();
     Pointer initscr();
