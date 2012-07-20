@@ -26,6 +26,7 @@ public interface NCursesLibrary extends Library {
     int     COLOR_PAIR(int pair);
     int     attroff(int attrs);
     int     attron(int attrs);
+    int     attrset(int attrs);
     int     clear();
     int     endwin();
     int     erase();
