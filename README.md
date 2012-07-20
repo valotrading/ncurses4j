@@ -11,7 +11,7 @@ Amend your `build.sbt`:
 
     resolvers += "ncurses4j Repository" at "http://valotrading.github.com/ncurses4j/maven"
 
-    libraryDependencies += "ncurses4j" % "ncurses4j" % "0.0.2"
+    libraryDependencies += "ncurses4j" % "ncurses4j" % "0.0.3"
 
 
 License
