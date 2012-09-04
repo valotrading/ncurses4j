@@ -2,7 +2,7 @@ organization := "ncurses4j"
 
 name := "ncurses4j"
 
-version := "0.0.5"
+version := "0.0.6-SNAPSHOT"
 
 libraryDependencies += "net.java.dev.jna" % "jna" % "3.0.9"
 
