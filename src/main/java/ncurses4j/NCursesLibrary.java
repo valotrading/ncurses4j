@@ -36,7 +36,7 @@ public interface NCursesLibrary extends Library {
     boolean has_colors();
     Pointer initscr();
     int     init_pair(short pair, short f, short b);
-    int     mvprintw(int x, int y, String fmt, Object... args);
+    int     mvprintw(int y, int x, String fmt, Object... args);
     int     printw(String fmt, Object... args);
     int     refresh();
     int     start_color();
