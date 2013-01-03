@@ -9,7 +9,7 @@ Installation
 
 Amend your `build.sbt`:
 
-    resolvers += "ncurses4j Repository" at "http://valotrading.github.com/ncurses4j/maven"
+    resolvers += "valotrading" at "http://valotrading.github.com/maven"
 
     libraryDependencies += "ncurses4j" % "ncurses4j" % "0.0.5"
 
