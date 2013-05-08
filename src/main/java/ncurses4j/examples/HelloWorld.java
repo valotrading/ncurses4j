@@ -18,40 +18,38 @@ package ncurses4j.examples;
 
 import com.sun.jna.Pointer;
 import ncurses4j.NCurses;
-import ncurses4j.NCursesLibrary;
 
 public class HelloWorld {
 
     public static void main(String[] args) {
-        NCursesLibrary ncurses = NCursesLibrary.INSTANCE;
         Pointer stdscr;
 
-        stdscr = ncurses.initscr();
+        stdscr = NCurses.initscr();
 
-        if (ncurses.has_colors()) {
-            ncurses.start_color();
+        if (NCurses.has_colors()) {
+            NCurses.start_color();
 
             if (NCurses.COLOR_PAIRS.get() > 1) {
-                ncurses.init_pair((short) 1, NCurses.COLOR_BLACK, NCurses.COLOR_WHITE);
-                ncurses.attron(ncurses.COLOR_PAIR(1));
+                NCurses.init_pair((short) 1, NCurses.COLOR_BLACK, NCurses.COLOR_WHITE);
+                NCurses.attron(NCurses.COLOR_PAIR(1));
             }
         }
 
-        ncurses.attron(NCurses.A_BOLD);
+        NCurses.attron(NCurses.A_BOLD);
 
-        int maxx = ncurses.getmaxx(stdscr);
-        int maxy = ncurses.getmaxy(stdscr);
+        int maxx = NCurses.getmaxx(stdscr);
+        int maxy = NCurses.getmaxy(stdscr);
 
         String message = "Hello World";
 
         int x = maxx / 2 - message.length() / 2;
         int y = maxy / 2;
 
-        ncurses.erase();
-        ncurses.mvprintw(y, x, message);
-        ncurses.refresh();
-        ncurses.getch();
-        ncurses.endwin();
+        NCurses.erase();
+        NCurses.mvprintw(y, x, message);
+        NCurses.refresh();
+        NCurses.getch();
+        NCurses.endwin();
     }
 
 }
