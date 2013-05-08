@@ -16,30 +16,30 @@
 
 package ncurses4j;
 
-public interface NCurses {
-    short COLOR_BLACK   = 0;
-    short COLOR_RED     = 1;
-    short COLOR_GREEN   = 2;
-    short COLOR_YELLOW  = 3;
-    short COLOR_BLUE    = 4;
-    short COLOR_MAGENTA = 5;
-    short COLOR_CYAN    = 6;
-    short COLOR_WHITE   = 7;
+public abstract class NCurses {
+    public static final short COLOR_BLACK   = 0;
+    public static final short COLOR_RED     = 1;
+    public static final short COLOR_GREEN   = 2;
+    public static final short COLOR_YELLOW  = 3;
+    public static final short COLOR_BLUE    = 4;
+    public static final short COLOR_MAGENTA = 5;
+    public static final short COLOR_CYAN    = 6;
+    public static final short COLOR_WHITE   = 7;
 
-    GlobalIntVariable COLOR_PAIRS = new GlobalIntVariable("COLOR_PAIRS");
+    public static final GlobalIntVariable COLOR_PAIRS = new GlobalIntVariable("COLOR_PAIRS");
 
     // Try to mimic the ncurses header file.
-    int A_NORMAL     = (1 - 1);
-    int A_STANDOUT   = NCURSES.BITS(1,  8);
-    int A_UNDERLINE  = NCURSES.BITS(1,  9);
-    int A_REVERSE    = NCURSES.BITS(1, 10);
-    int A_BLINK      = NCURSES.BITS(1, 11);
-    int A_DIM        = NCURSES.BITS(1, 12);
-    int A_BOLD       = NCURSES.BITS(1, 13);
-    int A_PROTECT    = NCURSES.BITS(1, 16);
-    int A_INVIS      = NCURSES.BITS(1, 15);
-    int A_ALTCHARSET = NCURSES.BITS(1, 14);
-    int A_CHARTEXT   = NCURSES.BITS(1,  0) - 1;
+    public static final int A_NORMAL     = (1 - 1);
+    public static final int A_STANDOUT   = NCURSES.BITS(1,  8);
+    public static final int A_UNDERLINE  = NCURSES.BITS(1,  9);
+    public static final int A_REVERSE    = NCURSES.BITS(1, 10);
+    public static final int A_BLINK      = NCURSES.BITS(1, 11);
+    public static final int A_DIM        = NCURSES.BITS(1, 12);
+    public static final int A_BOLD       = NCURSES.BITS(1, 13);
+    public static final int A_PROTECT    = NCURSES.BITS(1, 16);
+    public static final int A_INVIS      = NCURSES.BITS(1, 15);
+    public static final int A_ALTCHARSET = NCURSES.BITS(1, 14);
+    public static final int A_CHARTEXT   = NCURSES.BITS(1,  0) - 1;
 
     public static abstract class NCURSES {
         public static final int ATTR_SHIFT = 8;
