@@ -43,23 +43,21 @@ public abstract class NCurses {
 
     // Try to mimic the ncurses header file.
     public static final int A_NORMAL     = (1 - 1);
-    public static final int A_STANDOUT   = NCURSES.BITS(1,  8);
-    public static final int A_UNDERLINE  = NCURSES.BITS(1,  9);
-    public static final int A_REVERSE    = NCURSES.BITS(1, 10);
-    public static final int A_BLINK      = NCURSES.BITS(1, 11);
-    public static final int A_DIM        = NCURSES.BITS(1, 12);
-    public static final int A_BOLD       = NCURSES.BITS(1, 13);
-    public static final int A_PROTECT    = NCURSES.BITS(1, 16);
-    public static final int A_INVIS      = NCURSES.BITS(1, 15);
-    public static final int A_ALTCHARSET = NCURSES.BITS(1, 14);
-    public static final int A_CHARTEXT   = NCURSES.BITS(1,  0) - 1;
+    public static final int A_STANDOUT   = NCURSES_BITS(1,  8);
+    public static final int A_UNDERLINE  = NCURSES_BITS(1,  9);
+    public static final int A_REVERSE    = NCURSES_BITS(1, 10);
+    public static final int A_BLINK      = NCURSES_BITS(1, 11);
+    public static final int A_DIM        = NCURSES_BITS(1, 12);
+    public static final int A_BOLD       = NCURSES_BITS(1, 13);
+    public static final int A_PROTECT    = NCURSES_BITS(1, 16);
+    public static final int A_INVIS      = NCURSES_BITS(1, 15);
+    public static final int A_ALTCHARSET = NCURSES_BITS(1, 14);
+    public static final int A_CHARTEXT   = NCURSES_BITS(1,  0) - 1;
 
-    public static abstract class NCURSES {
-        public static final int ATTR_SHIFT = 8;
+    private static final int NCURSES_ATTR_SHIFT = 8;
 
-        public static int BITS(int mask, int shift) {
-            return mask << (shift + NCURSES.ATTR_SHIFT);
-        }
+    private static int NCURSES_BITS(int mask, int shift) {
+        return mask << (shift + NCURSES_ATTR_SHIFT);
     }
 
     public static int COLOR_PAIRS() {
