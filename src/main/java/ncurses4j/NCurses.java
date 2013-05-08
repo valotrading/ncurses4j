@@ -24,8 +24,12 @@ import com.sun.jna.ptr.IntByReference;
 public abstract class NCurses {
     private static final NativeLibrary LIBRARY = NativeLibrary.getInstance("ncurses");
 
+    private static final IntByReference COLOR_PAIRS = new IntByReference();
+
     static {
         Native.register(LIBRARY);
+
+        COLOR_PAIRS.setPointer(LIBRARY.getGlobalVariableAddress("COLOR_PAIRS"));
     }
 
     public static final short COLOR_BLACK   = 0;
@@ -36,8 +40,6 @@ public abstract class NCurses {
     public static final short COLOR_MAGENTA = 5;
     public static final short COLOR_CYAN    = 6;
     public static final short COLOR_WHITE   = 7;
-
-    public static final GlobalIntVariable COLOR_PAIRS = new GlobalIntVariable("COLOR_PAIRS");
 
     // Try to mimic the ncurses header file.
     public static final int A_NORMAL     = (1 - 1);
@@ -60,6 +62,10 @@ public abstract class NCurses {
         }
     }
 
+    public static int COLOR_PAIRS() {
+        return COLOR_PAIRS.getValue();
+    }
+
     public static native int     COLOR_PAIR(int pair);
     public static native int     attroff(int attrs);
     public static native int     attron(int attrs);
@@ -77,22 +83,4 @@ public abstract class NCurses {
     public static native int     printw(String str);
     public static native int     refresh();
     public static native int     start_color();
-
-    public static class GlobalIntVariable {
-        private String         name;
-        private IntByReference value;
-
-        public GlobalIntVariable(String name) {
-            this.name = name;
-        }
-
-        public synchronized int get() {
-            if (value == null) {
-                value = new IntByReference();
-                value.setPointer(LIBRARY.getGlobalVariableAddress(name));
-            }
-
-            return value.getValue();
-        }
-    }
 }

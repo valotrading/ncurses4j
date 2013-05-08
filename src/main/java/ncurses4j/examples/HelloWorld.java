@@ -29,7 +29,7 @@ public class HelloWorld {
         if (NCurses.has_colors()) {
             NCurses.start_color();
 
-            if (NCurses.COLOR_PAIRS.get() > 1) {
+            if (NCurses.COLOR_PAIRS() > 1) {
                 NCurses.init_pair((short) 1, NCurses.COLOR_BLACK, NCurses.COLOR_WHITE);
                 NCurses.attron(NCurses.COLOR_PAIR(1));
             }
