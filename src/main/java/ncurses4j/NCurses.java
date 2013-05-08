@@ -16,7 +16,15 @@
 
 package ncurses4j;
 
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+
 public abstract class NCurses {
+
+    static {
+        Native.register("ncurses");
+    }
+
     public static final short COLOR_BLACK   = 0;
     public static final short COLOR_RED     = 1;
     public static final short COLOR_GREEN   = 2;
@@ -48,4 +56,22 @@ public abstract class NCurses {
             return mask << (shift + NCURSES.ATTR_SHIFT);
         }
     }
+
+    public static native int     COLOR_PAIR(int pair);
+    public static native int     attroff(int attrs);
+    public static native int     attron(int attrs);
+    public static native int     attrset(int attrs);
+    public static native int     clear();
+    public static native int     endwin();
+    public static native int     erase();
+    public static native int     getch();
+    public static native int     getmaxx(Pointer win);
+    public static native int     getmaxy(Pointer win);
+    public static native boolean has_colors();
+    public static native Pointer initscr();
+    public static native int     init_pair(short pair, short f, short b);
+    public static native int     mvprintw(int y, int x, String str);
+    public static native int     printw(String str);
+    public static native int     refresh();
+    public static native int     start_color();
 }
