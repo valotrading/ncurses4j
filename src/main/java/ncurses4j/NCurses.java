@@ -17,7 +17,9 @@
 package ncurses4j;
 
 import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.IntByReference;
 
 public abstract class NCurses {
 
@@ -74,4 +76,22 @@ public abstract class NCurses {
     public static native int     printw(String str);
     public static native int     refresh();
     public static native int     start_color();
+
+    public static class GlobalIntVariable {
+        private String         name;
+        private IntByReference value;
+
+        public GlobalIntVariable(String name) {
+            this.name = name;
+        }
+
+        public synchronized int get() {
+            if (value == null) {
+                value = new IntByReference();
+                value.setPointer(NativeLibrary.getInstance("ncurses").getGlobalVariableAddress(name));
+            }
+
+            return value.getValue();
+        }
+    }
 }
