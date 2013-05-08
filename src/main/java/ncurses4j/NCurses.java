@@ -22,9 +22,10 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 
 public abstract class NCurses {
+    private static final NativeLibrary LIBRARY = NativeLibrary.getInstance("ncurses");
 
     static {
-        Native.register("ncurses");
+        Native.register(LIBRARY);
     }
 
     public static final short COLOR_BLACK   = 0;
@@ -88,7 +89,7 @@ public abstract class NCurses {
         public synchronized int get() {
             if (value == null) {
                 value = new IntByReference();
-                value.setPointer(NativeLibrary.getInstance("ncurses").getGlobalVariableAddress(name));
+                value.setPointer(LIBRARY.getGlobalVariableAddress(name));
             }
 
             return value.getValue();
